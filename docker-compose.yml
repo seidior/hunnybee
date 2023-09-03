@@ -1,0 +1,14 @@
+services:
+  hunnybee:
+    container_name: "hunnybee"
+    image: "ghcr.io/hunnybee-website/hunnybee-ca"
+    ports:
+      - "0.0.0.0:80:80"
+    restart: "unless-stopped"
+    volumes:
+      - "caddy_data:/data"
+      - "caddy_config:/config"
+
+volumes:
+  caddy_data:
+  caddy_config:

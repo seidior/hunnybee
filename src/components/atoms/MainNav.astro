@@ -1,0 +1,63 @@
+---
+interface Props {
+  currentPage: string;
+}
+
+const { currentPage } = Astro.props;
+
+const navClasses =
+  "font-heading font-bold text-xl uppercase tracking-wider sm:text-2xl hover:text-honeyBrown hover:underline active:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-honeyBrown";
+---
+
+<nav aria-label="Main">
+  <ul class="flex flex-row space-x-8">
+    <li>
+      {
+        currentPage === "home" ? (
+          <a
+            href="/"
+            aria-current="page"
+            class={`${navClasses} text-honeyBrown underline`}>
+            Home
+          </a>
+        ) : (
+          <a href="/" class={navClasses}>
+            Home
+          </a>
+        )
+      }
+    </li>
+    <li>
+      {
+        currentPage === "menu" ? (
+          <a
+            href="/menu"
+            aria-current="page"
+            class={`${navClasses} text-honeyBrown underline`}>
+            Menu
+          </a>
+        ) : (
+          <a href="/menu" class={navClasses}>
+            Menu
+          </a>
+        )
+      }
+    </li>
+    <li>
+      {
+        currentPage === "about" ? (
+          <a
+            href="/about"
+            aria-current="page"
+            class={`${navClasses} text-honeyBrown underline`}>
+            About
+          </a>
+        ) : (
+          <a href="/about" class={navClasses}>
+            About
+          </a>
+        )
+      }
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,174 @@
+---
+import Layout from "@templates/Layout.astro";
+---
+
+<Layout page="menu">
+  <main class="mx-auto max-w-screen-sm p-4 text-center">
+    <h1 id="main-content" tabindex="-1" class="mb-8 mt-4 text-center">
+      Our Menu
+    </h1>
+    <p>Explore our menu! Scroll down or select a menu section to skip ahead.</p>
+    <nav aria-labelledby="menu-links" class="my-8">
+      <h2 id="menu-links" class="sr-only">Menu Sections</h2>
+      <h3>Food</h3>
+      <ul>
+        <li class="py-2">
+          <a href="#food-brunch-menu" class="py-4">Brunch</a>
+        </li>
+      </ul>
+      <h3 class="mt-2">Drinks</h3>
+      <ul>
+        <li class="py-2"><a href="#drinks-hot-menu" class="py-4">Hot</a></li>
+        <li class="py-2">
+          <a href="#drinks-cold-menu" class="py-4">Cold</a>
+        </li>
+      </ul>
+    </nav>
+    <hr class="mx-auto w-32 border-blackBee" />
+    <section class="py-12">
+      <h2 id="food-menu" class="mb-10 text-greenGrass">Food</h2>
+
+      <h3 id="food-brunch-menu" class="mb-8" tabindex="-1">Brunch</h3>
+
+      <p class="mb-8">Served all day.</p>
+
+      <dl>
+        <dt>Sandwich</dt>
+        <dd>
+          <div>
+            Fried egg, cheese, tomato, herb aioli on grilled sourdough with ham
+            or avocado
+          </div>
+          <div>
+            <strong>$9.50</strong> or <strong>$10.50</strong> with both
+          </div>
+        </dd>
+
+        <dt>Sweet Ricotta Pancakes</dt>
+        <dd>
+          <div>Maple syrup, butter, blueberry jam and cultured cream</div>
+          <div>
+            <strong>$13</strong>
+          </div>
+        </dd>
+
+        <dt>Savoury Ricotta Pancakes</dt>
+        <dd>
+          <div>Two eggs, breakfast sausage, maple syrup & butter</div>
+          <div>
+            <strong>$15</strong>
+          </div>
+        </dd>
+
+        <dt>Hash Benedict</dt>
+        <dd>
+          <div>
+            Two poached eggs, roasted vegetables, hollandaise, curried ketchup
+            with sausage or avocado (GF)
+          </div>
+          <div>
+            <strong>$15</strong> or <strong>$17</strong> with both
+          </div>
+        </dd>
+
+        <dt>Shakshuka</dt>
+        <dd>
+          <div>
+            Red pepper & tomato stew, two eggs, lentils, labneh, grilled toast<br
+            /><strong>$12</strong>
+          </div>
+        </dd>
+
+        <dt>Egg & Avocado Toast</dt>
+        <dd>
+          <div>Fried egg, avocado, pickled red onions, on sourdough</div>
+          <div>
+            <strong>$9</strong>
+          </div>
+        </dd>
+
+        <dt>Coconut Bircher Muesli</dt>
+        <dd>
+          <div>With housemade granola & jam</div>
+          <div><strong>$7</strong></div>
+        </dd>
+
+        <dt>Yogurt & Granola</dt>
+        <dd>
+          <div>Housemade yogurt, granola & jam</div>
+          <div>
+            <strong>$7</strong>
+          </div>
+        </dd>
+      </dl>
+    </section>
+
+    <hr class="mx-auto block w-32 border-blackBee" />
+
+    <section class="py-12">
+      <h2 id="drinks-menu" class="mb-10 text-greenGrass">Drinks</h2>
+
+      <h3 id="drinks-hot-menu" class="mb-8" tabindex="-1">Hot</h3>
+
+      <dl>
+        <dt>Filter Coffee</dt>
+        <dd>$3</dd>
+
+        <dt>Americano</dt>
+        <dd>$3</dd>
+
+        <dt>Cortado</dt>
+        <dd>$3.50</dd>
+
+        <dt>Cappuccino</dt>
+        <dd>$3.50</dd>
+
+        <dt>Latte</dt>
+        <dd>$4</dd>
+
+        <dt>Tea</dt>
+        <dd>$3</dd>
+
+        <dt>Almond Milk +</dt>
+        <dd>$0.50</dd>
+
+        <dt>Oat Milk (contains nuts) +</dt>
+        <dd>$0.50</dd>
+      </dl>
+
+      <h3 id="drinks-cold-menu" class="mb-8 mt-10" tabindex="-1">Cold</h3>
+
+      <dl>
+        <dt>Fresh Orange Juice</dt>
+        <dd>$3.50</dd>
+
+        <dt>Hibiscus Lemonade</dt>
+        <dd>$3.50</dd>
+
+        <dt>Iced Tea</dt>
+        <dd>$3</dd>
+
+        <dt>Iced Coffee</dt>
+        <dd>$3</dd>
+
+        <dt>Arnold Palmer Slush</dt>
+        <dd>$3.50 or $4.50</dd>
+
+        <dt>Aperol Spritz Slush</dt>
+        <dd>$9</dd>
+
+        <dt>Pineapple Mezcal Margarita</dt>
+        <dd>$12</dd>
+
+        <dt>Beer</dt>
+        <dd>$6 to $8</dd>
+
+        <dt>Cider</dt>
+        <dd>$8</dd>
+
+        <dt>Wine</dt>
+        <dd>By the bottle</dd>
+      </dl>
+    </section>
+  </main>
+</Layout>

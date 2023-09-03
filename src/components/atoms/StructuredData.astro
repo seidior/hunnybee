@@ -1,0 +1,109 @@
+---
+/* Google doesn't require each type, so these are just saved for posterity.
+
+// const moreContext = {"{"}"@context": {"{"}
+//   "name": "http://schema.org/name",
+//   "address": "http://schema.org/address",
+//   "addressCountry": "http://schema.org/addressCountry",
+//   "addressLocality": "http://schema.org/addressLocality",
+//   "addressRegion": "http://schema.org/addressRegion",
+//   "currenciesAccepted": "http://schema.org/currenciesAccepted",
+//   "description": "http://schema.org/description",
+//   "email": "http://schema.org/email",
+//   "image": "http://schema.org/image",
+//   "geo": "http://schema.org/geo",
+//   "keywords": "http://schema.org/keywords",
+//   "latitude": {"{"}
+//     "@id": "http://schema.org/latitude",
+//     "@type": "xsd:float"
+//   },
+//   "longitude": {"{"}
+//     "@id": "http://schema.org/longitude",
+//     "@type": "xsd:float"
+//   },
+//   "openingHours": "http://schema.org/openingHours",
+//   "paymentAccepted": "http://schema.org/paymentAccepted",
+//   "postalCode": "http://schema.org/postalCode",
+//   "priceRange": "http://schema.org/priceRange",
+//   "servesCuisine": "http://schema.org/servesCuisine",
+//   "streetAddress": "http://schema.org/streetAddress",
+//   "xsd": "http://www.w3.org/2001/XMLSchema#"
+// }};
+
+*/
+
+import { getImage } from "astro:assets";
+
+import HunnybeeInside from "@assets/hunnybee-inside.jpg";
+import HunnybeeLogo from "@assets/hunnybee-logo.png";
+
+const insidePath = await getImage({ src: HunnybeeInside, format: "webp" });
+const logoPath = await getImage({ src: HunnybeeLogo, format: "webp" });
+
+const hunnybeeData = {
+  "@context": "http://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  name: "Hunnybee Bruncheonette",
+  servesCuisine: [
+    "Cafe",
+    "Canadian",
+    "Brunch",
+    "Breakfast & Brunch",
+    "Coffee & Tea"
+  ],
+  currenciesAccepted: "CAD",
+  paymentAccepted: ["Cash", "Credit Card"],
+  priceRange: "$",
+  description:
+    "Hunnybee Bruncheonette is a counter-service bruncheonette and cafe located at 789 Gore Avenue in Vancouver, British Columbia.",
+  keywords: [
+    "brunch",
+    "coffee",
+    "tea",
+    "Vancouver",
+    "Strathcona",
+    "bruncheonette",
+    "breakfast",
+    "almond milk",
+    "oat milk",
+    "wine",
+    "beer"
+  ],
+  url: "https://hunnybee.ca",
+  hasMenu: {
+    "@type": "URL",
+    menu: "https://hunnybee.ca/menu"
+  },
+  sameAs: [
+    "https://www.hunnybee.ca",
+    "https://hunnybeebrunch.com",
+    "https://www.hunnybeebrunch.com"
+  ],
+  logo: `https://hunnybee.ca${logoPath.src}`,
+  image: `https://hunnybee.ca${insidePath.src}`,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "789 Gore Avenue",
+    addressLocality: "Vancouver",
+    addressRegion: "BC",
+    postalCode: "V6A 2Z9",
+    addressCountry: "Canada"
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "49.277670",
+    longitude: "-123.097030"
+  },
+  hasMap:
+    "https://www.google.com/maps/search/?api=1&query=Hunnybee+Bruncheonette&query_place_id=ChIJvfCKYvhxhlQRXY_nS1P38W4",
+  openingHours:
+    "Mo 08:00-16:00 Tu 08:00-16:00 We 08:00-16:00 Th 08:00-16:00 Fr 08:00-16:00 Sa 08:00-16:00 Su 08:00-16:00",
+  email: "hey@hunnybee.ca"
+};
+---
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(hunnybeeData)}
+  is:inline
+/>

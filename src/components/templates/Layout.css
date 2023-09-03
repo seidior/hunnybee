@@ -1,0 +1,64 @@
+/*  Hunnybee's Layout.css
+ *  Design and Accessibility by EasySurf
+ *  Development by Invisible Carrot
+ */
+
+/* Font face declaration to improve page load performance */
+
+@font-face {
+  font-display: swap;
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/oswald-v49-latin-700.woff2") format("woff2");
+}
+
+/* Base styles */
+
+h1 {
+  @apply font-heading font-bold text-greenGrass text-2xl uppercase tracking-wider sm:text-3xl;
+}
+
+h2 {
+  @apply font-heading font-bold text-honeyBrown text-xl uppercase tracking-wider sm:text-2xl;
+}
+
+h3 {
+  @apply font-heading font-bold text-honeyBrown tracking-wider uppercase;
+}
+
+a {
+  @apply text-greenGrass underline hover:text-honeyBrown hover:no-underline focus:outline focus:outline-honeyBrown focus:outline-2 focus:outline-offset-2;
+}
+
+nav a {
+  @apply text-greenGrass no-underline;
+}
+
+p {
+  @apply font-sans text-blackBee;
+}
+
+dt {
+  @apply mt-6 first:mt-0 font-heading font-bold text-blackBee uppercase;
+}
+
+/* Not yet supported by Tailwind CSS */
+
+h1,
+h2,
+h3,
+h4,
+dd,
+[data-balance="balance"] {
+  text-wrap: balance;
+}
+
+/* Needed for full-screen on iPhone X and later */
+
+@media (orientation: landscape) {
+  [data-mobilepad="landscape"] {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}

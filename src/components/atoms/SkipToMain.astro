@@ -1,0 +1,34 @@
+---
+
+---
+
+<div
+  class="h-2 w-full text-center focus-within:h-14 focus-within:bg-greenGrass motion-safe:transition-all">
+  <a
+    id="main-content-link"
+    href="#main-content"
+    tabindex="0"
+    class="sr-only h-2 w-40 bg-greenGrass text-center normal-case leading-none text-whiteDaisy underline hover:text-whiteDaisy hover:no-underline focus:not-sr-only focus:h-14 focus:leading-[3.5rem] focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-whiteDaisy motion-safe:transition-all"
+    >Skip to main content</a
+  >
+</div>
+
+<script>
+  const handleBtnKeyDown = (event: any) => {
+    if (
+      event.key === " " ||
+      event.key === "Enter" ||
+      event.key === "Spacebar"
+    ) {
+      event.preventDefault();
+      if (event.target) {
+        const link = event.target;
+        window.location.assign(link.href);
+      }
+    }
+  };
+
+  document
+    .querySelector("#main-content-link")
+    ?.addEventListener("keydown", handleBtnKeyDown);
+</script>

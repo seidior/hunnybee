@@ -1,0 +1,55 @@
+---
+import { getImage } from "astro:assets";
+
+import insidePicture from "@assets/hunnybee-inside.jpg";
+
+const insidePictureImageWide2x = await getImage({
+  src: insidePicture,
+  format: "webp",
+  width: 1216
+});
+const insidePictureImageWide1x = await getImage({
+  src: insidePicture,
+  format: "webp",
+  width: 608
+});
+const insidePictureImage1x = await getImage({
+  src: insidePicture,
+  format: "webp",
+  width: 320
+});
+
+const insidePictureImageWide2xJPG = await getImage({
+  src: insidePicture,
+  format: "jpg",
+  width: 1216
+});
+const insidePictureImageWide1xJPG = await getImage({
+  src: insidePicture,
+  format: "jpg",
+  width: 608
+});
+const insidePictureImage1xJPG = await getImage({
+  src: insidePicture,
+  format: "jpg",
+  width: 320
+});
+
+const aspectRatio = `aspect-ratio: ${insidePicture.width}/${insidePicture.height}`;
+---
+
+<picture class="w-full" style={aspectRatio}>
+  <source
+    srcset={`${insidePictureImage1x.src} 320w, ${insidePictureImageWide1x.src} 608w, ${insidePictureImageWide2x.src} 1216w`}
+    sizes="((max-width: 480px) and (max-resolution: 192dpi)) 320px, ((max-width: 640px) or ((max-width: 480px) and (min-resolution: 192dpi))) 608px, 1216px"
+    type="image/webp"
+  />
+  <img
+    src={insidePictureImage1xJPG.src}
+    srcset={`${insidePictureImage1xJPG.src} 320w, ${insidePictureImageWide1xJPG.src} 608w, ${insidePictureImageWide2xJPG.src} 1216w`}
+    sizes="((max-width: 480px) and (max-resolution: 192dpi)) 320px, ((max-width: 640px) or ((max-width: 480px) and (min-resolution: 192dpi))) 608px, 1216px"
+    alt="Hunnybee has high ceilings, many plants, and lots of sunlight. Its counter is L-shaped, made of a wood surface, and has white subway tiles down its side panels. There are metal hooks under the counter to hang personal belongings and metal stools to sit on. Behind the counter are two chalkboard menus hanging on the wall and a large espresso machine."
+    class="w-full"
+    style={aspectRatio}
+  />
+</picture>

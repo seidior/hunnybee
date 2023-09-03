@@ -1,0 +1,41 @@
+{
+  "name": "Hunnybee Bruncheonette",
+  "short_name": "Hunnybee",
+  "start_url": "/",
+  "description": "The website for Hunnybee Bruncheonette in Vancouver, BC.",
+  "icons": [
+    {
+      "src": "/images/hunnybee-icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/hunnybee-icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/hunnybee-icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/images/hunnybee-icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/hunnybee-favicon.svg",
+      "sizes": "150x150",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#368157",
+  "background_color": "#368157",
+  "display": "standalone"
+}

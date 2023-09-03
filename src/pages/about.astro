@@ -1,0 +1,117 @@
+---
+import BirdsBeetsImage from "@atoms/BirdsBeetsImage.astro";
+import HunnybeeMap from "@atoms/HunnybeeMap.astro";
+import ThankYouPizzaLogo from "@atoms/ThankYouPizzaLogo.astro";
+import Layout from "@templates/Layout.astro";
+---
+
+<Layout page="about">
+  <main class="mx-auto max-w-screen-sm p-4">
+    <h1
+      id="main-content"
+      tabindex="-1"
+      class="mb-8 mt-4 text-center"
+      aria-label="About us">
+      About us
+    </h1>
+
+    <h2 class="mb-8" aria-label="Contact us">Contact us</h2>
+
+    <div class="mb-8">
+      <ul>
+        <li>
+          <strong>Address:</strong> 789 Gore Avenue, Vancouver, BC V6A 2Z9
+        </li>
+        <li>
+          <strong>Email:</strong>{" "}
+          <a
+            href="mailto:hey@hunnybee.ca"
+            aria-label="hey at hunnybee dot c. a.">hey@hunnybee.ca</a
+          >
+        </li>
+        <li><strong>Hours:</strong> 8:00 am to 4:00 pm daily</li>
+      </ul>
+    </div>
+
+    <p class="mb-4">
+      Hunnybee&rsquo;s address is 789 Gore Avenue. It&rsquo;s located in the
+      Strathcona neighbourhood of Vancouver on the corner of Gore Avenue and
+      Union Street. It&rsquo;s on the West side of Gore Avenue and North side of
+      Union Street.
+    </p>
+
+    <p class="mb-4">
+      <a
+        href="https://www.google.com/maps/dir//Hunnybee+Bruncheonette,+789+Gore+Ave,+Vancouver,+BC+V6A+2Z9,+Canada"
+        >Directions to Hunnybee (Google Maps)</a
+      >
+    </p>
+
+    <p>
+      <a
+        href="https://maps.apple.com/?daddr=Hunnybee%20Bruncheonette,%20789%20Gore%20Ave,%20Vancouver%20BC%20V6A%202Z9,%20Canada&dirflg=d"
+        >Directions to Hunnybee (Apple Maps)</a
+      >
+    </p>
+
+    <HunnybeeMap />
+
+    <h2 class="mb-8">Stay for dinner</h2>
+
+    <p class="mb-4">
+      Visit our evening restaurant, Thank You Pizza, for some wood-fired
+      sourdough pizzas, natural wines, and local beers. It&rsquo;s at the same
+      location as Hunnybee.
+    </p>
+
+    <div class="mb-8">
+      <ul>
+        <li>
+          <strong>Address:</strong> 789 Gore Avenue, Vancouver, BC V6A 2Z9
+        </li>
+        <li>
+          <strong>Hours:</strong> 5:00 pm to 9:30 pm, Wednesday to Saturday
+        </li>
+      </ul>
+    </div>
+
+    <p>
+      <a href="https://thankyoupizza.square.site/"
+        >Order online from Thank You Pizza</a
+      >
+    </p>
+
+    <ThankYouPizzaLogo />
+
+    <h2 class="mb-8">Visit The Birds and The Beets</h2>
+
+    <p class="mb-4">
+      Also, if you’re in Gastown, come visit our other location, The Birds & The
+      Beets.
+    </p>
+
+    <div class="mb-8">
+      <ul>
+        <li>
+          <strong>Address:</strong> 55 Powell Street, Vancouver, BC V6A 1E9
+        </li>
+      </ul>
+    </div>
+
+    <p class="mb-4">
+      <a
+        href="https://www.google.com/maps/dir//The+Birds+%26+The+Beets,+Powell+Street,+Vancouver,+BC,+Canada"
+        >Directions to Birds (Google Maps)</a
+      >
+    </p>
+
+    <p>
+      <a
+        href="https://maps.apple.com/?daddr=The%20Birds%20and%20the%20Beets,%2055%20Powell%20St,%20Vancouver%20BC%20V6A%201E9,%20Canada&dirflg=d"
+        >Directions to Birds (Apple Maps)</a
+      >
+    </p>
+
+    <BirdsBeetsImage />
+  </main>
+</Layout>

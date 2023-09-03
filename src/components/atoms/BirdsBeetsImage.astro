@@ -1,0 +1,43 @@
+---
+import { getImage } from "astro:assets";
+
+import Birds from "@assets/birds-beets-inside.jpg";
+
+const Birds2x = await getImage({
+  src: Birds,
+  format: "webp"
+});
+const Birds1x = await getImage({
+  src: Birds,
+  format: "webp",
+  width: 640
+});
+const Birds2xJPG = await getImage({
+  src: Birds,
+  format: "jpg"
+});
+const Birds1xJPG = await getImage({
+  src: Birds,
+  format: "jpg",
+  width: 640
+});
+const aspectBirds = { aspectRatio: `${Birds.width}/${Birds.height}` };
+---
+
+<figure class="my-8">
+  <picture class="w-full" style={aspectBirds}>
+    <source
+      srcset={`${Birds1x.src} 640w, ${Birds2x.src} 1125w`}
+      sizes="((max-width: 640px) and (max-resolution: 192dpi)) 640px, 1125px"
+      type="image/webp"
+    />
+    <img
+      src={Birds1xJPG.src}
+      srcset={`${Birds1xJPG.src} 640w, ${Birds2xJPG.src} 1125w`}
+      sizes="((max-width: 640px) and (max-resolution: 192dpi)) 640px, 1125px"
+      alt="The Birds and The Beets cafe has high ceilings and bright floor-to-ceiling windows at its entrance. By the entrance, just before the counter, there's a corner where you can buy flowers. The long counter runs the length of the cafe and has a large espresso machine. Behind the counter, the menu is written along the back wall."
+      class="w-full"
+      style={aspectBirds}
+    />
+  </picture>
+</figure>

@@ -1,0 +1,57 @@
+---
+import { getImage } from "astro:assets";
+
+import HunnybeeLogo from "@assets/hunnybee-logo.png";
+
+const aspectRatio = `aspect-ratio: ${HunnybeeLogo.width}/${HunnybeeLogo.height}`;
+
+const HunnyBeeLogoFull = await getImage({
+  src: HunnybeeLogo,
+  format: "webp",
+  width: 1080
+});
+
+const HunnyBeeLogo1x = await getImage({
+  src: HunnybeeLogo,
+  format: "webp",
+  width: 640
+});
+
+const HunnyBeeLogoFullPNG = await getImage({
+  src: HunnybeeLogo,
+  format: "png",
+  width: 1080
+});
+
+const HunnyBeeLogo1xPNG = await getImage({
+  src: HunnybeeLogo,
+  format: "png",
+  width: 640
+});
+---
+
+<div
+  class="mx-auto mt-4 max-w-screen-sm p-4"
+  style={aspectRatio}
+  transition:persist>
+  <a
+    href="/"
+    aria-label="Hunnybee Bruncheonette"
+    class="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-honeyBrown">
+    <picture class="w-full" style={aspectRatio}>
+      <source
+        srcset={`${HunnyBeeLogo1x.src} 640w, ${HunnyBeeLogoFull.src} 1080w`}
+        sizes="((max-width: 640px) and (max-resolution: 192dpi)) 640px, 1080px"
+        type="image/webp"
+      />
+      <img
+        src={HunnyBeeLogo1xPNG.src}
+        srcset={`${HunnyBeeLogo1xPNG.src} 640w, ${HunnyBeeLogoFullPNG.src} 1080w`}
+        sizes="((max-width: 640px) and (max-resolution: 192dpi)) 640px, 1080px"
+        alt="Hunnybee Bruncheonette Logo"
+        class="w-full"
+        style={aspectRatio}
+      />
+    </picture>
+  </a>
+</div>

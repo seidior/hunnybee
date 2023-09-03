@@ -1,0 +1,30 @@
+---
+import { getImage } from "astro:assets";
+
+import HunnybeeMapImage from "@assets/hunnybee-map.png";
+
+const MapImage = await getImage({
+  src: HunnybeeMapImage,
+  format: "webp"
+});
+const MapImageJPG = await getImage({
+  src: HunnybeeMapImage,
+  format: "jpg"
+});
+
+const aspectMap = {
+  aspectRatio: `${HunnybeeMapImage.width}/${HunnybeeMapImage.height}`
+};
+---
+
+<figure class="my-8">
+  <picture class="w-full" style={aspectMap}>
+    <source srcset={MapImage.src} type="image/webp" />
+    <img
+      src={MapImageJPG.src}
+      alt="Hunnybee's address is 789 Gore Avenue. It's located in the Strathcona neighbourhood of Vancouver on the corner of Gore Avenue and Union Street. It's on the West side of Gore Avenue and the North side of Union Street."
+      class="w-full"
+      style={aspectMap}
+    />
+  </picture>
+</figure>

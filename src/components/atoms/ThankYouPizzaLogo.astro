@@ -1,0 +1,27 @@
+---
+import { getImage } from "astro:assets";
+
+import TYPizzaLogo from "@assets/thank-you-pizza-logo.jpg";
+
+const TYPizza = await getImage({
+  src: TYPizzaLogo,
+  format: "webp"
+});
+const TYPizzaJPG = await getImage({
+  src: TYPizzaLogo,
+  format: "jpg"
+});
+const aspectTYP = { aspectRatio: `${TYPizzaLogo.width}/${TYPizzaLogo.height}` };
+---
+
+<figure class="my-8">
+  <picture class="w-full" style={aspectTYP}>
+    <source srcset={TYPizza.src} type="image/webp" />
+    <img
+      src={TYPizzaJPG.src}
+      alt="The Thank You Pizza logo is a cartoon mushroom man holding a pizza with thank you above his head and pizza under his feet in a bubbly font."
+      class="w-full"
+      style={aspectTYP}
+    />
+  </picture>
+</figure>

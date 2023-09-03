@@ -1,0 +1,74 @@
+name: Update Packages (Latest)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  pnpm-install:
+    name: Install packages (with cache)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "latest"
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: "latest"
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-directory.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+
+  update:
+    name: Update packages
+    needs: pnpm-install
+    runs-on: ubuntu-latest
+
+    outputs:
+      packages: ${{ steps.list-updates.outputs.PACKAGES }}
+      upstatus: ${{ steps.list-updates.outputs.UPSTATUS }}
+
+    steps:
+      - name: Update dependencies
+        run: pnpm update -L > pnpm-output.txt
+
+      - name: Check for package updates
+        id: list-updates
+        run:
+          echo "PACKAGES=\"$(./get-dependencies.sh)\";UPSTATUS=$?" >>
+          "$GITHUB_OUTPUT"
+
+  pull-request:
+    name: Create pull request
+    needs: update
+    runs-on: ubuntu-latest
+    if: ${{ fromJSON(needs.update.outputs.upstatus) > 0 }}
+
+    steps:
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          title: "Package updates"
+          delete-branch: true
+          body: ${{ needs.update.outputs.packages }}

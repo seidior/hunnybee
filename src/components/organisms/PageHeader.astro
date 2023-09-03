@@ -1,0 +1,17 @@
+---
+import MainNav from "@atoms/MainNav.astro";
+import SkipToMain from "@atoms/SkipToMain.astro";
+import PersistentHeader from "@molecules/PersistentHeader.astro";
+
+interface Props {
+  page: string;
+}
+
+const { page } = Astro.props;
+---
+
+<header class="flex w-full flex-col items-center justify-center pb-8">
+  <SkipToMain />
+  <PersistentHeader />
+  <MainNav currentPage={page} />
+</header>

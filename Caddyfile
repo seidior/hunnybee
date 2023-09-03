@@ -1,0 +1,15 @@
+{
+	http_port 80
+	grace_period 0
+	shutdown_delay 0
+  auto_https off
+	email hey@hunnybee.ca
+}
+
+:80 {
+  root * /srv/www/hunnybee
+  header ?Cache-Control max-age=3600
+  try_files {path} {path}/ =404
+  encode zstd gzip
+  file_server
+}

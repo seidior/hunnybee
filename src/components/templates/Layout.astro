@@ -1,0 +1,68 @@
+---
+import { ViewTransitions } from "astro:transitions";
+
+import StructuredData from "@atoms/StructuredData.astro";
+import PageFooter from "@organisms/PageFooter.astro";
+import PageHeader from "@organisms/PageHeader.astro";
+import "./Layout.css";
+
+interface Props {
+  page: string;
+}
+
+const { page } = Astro.props;
+
+let pageTitle = "";
+
+switch (page) {
+  case "menu":
+    pageTitle = "Menu - ";
+    break;
+  case "about":
+    pageTitle = "About - ";
+    break;
+  case "accessibility":
+    pageTitle = "Accessibility - ";
+    break;
+  default:
+    pageTitle = "";
+    break;
+}
+---
+
+<!doctype html>
+<!--
+  Accessibility by EasySurf.
+  Development by Invisible Carrot.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{pageTitle}Hunnybee Bruncheonette</title>
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/images/hunnybee-favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/images/hunnybee-icon.png" />
+    <link rel="manifest" href="/hunnybee.webmanifest" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta name="apple-mobile-web-app-title" content="Hunnybee" />
+    <meta name="application-name" content="Hunnybee" />
+    <meta name="msapplication-TileColor" content="#368157" />
+    <meta name="theme-color" content="#368157" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="Hunnybee Bruncheonette is a counter-service bruncheonette and cafe located at 789 Gore Avenue in Vancouver, British Columbia."
+    />
+    <meta name="generator" content={Astro.generator} />
+
+    {Astro.url.pathname === "/" && <StructuredData />}
+    <ViewTransitions />
+  </head>
+  <body class="bg-greenTea text-blackBee">
+    <PageHeader page={page} />
+    <slot />
+    <PageFooter transition:persist />
+  </body>
+</html>
