@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   build:
-    name: Install packages (with cache)
+    name: Build + upload website
     runs-on: ubuntu-latest
 
     steps:

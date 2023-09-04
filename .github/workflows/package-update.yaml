@@ -4,9 +4,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  pnpm-install:
-    name: Install packages (with cache)
+  update:
+    name: Update packages
     runs-on: ubuntu-latest
+
+    outputs:
+      packages: ${{ steps.list-updates.outputs.PACKAGES }}
+      upstatus: ${{ steps.list-updates.outputs.UPSTATUS }}
 
     steps:
       - name: Checkout
@@ -40,16 +44,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-  update:
-    name: Update packages
-    needs: pnpm-install
-    runs-on: ubuntu-latest
-
-    outputs:
-      packages: ${{ steps.list-updates.outputs.PACKAGES }}
-      upstatus: ${{ steps.list-updates.outputs.UPSTATUS }}
-
-    steps:
       - name: Update dependencies
         run: pnpm update -L > pnpm-output.txt
 
