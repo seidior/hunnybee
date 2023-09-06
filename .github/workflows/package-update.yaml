@@ -53,16 +53,10 @@ jobs:
           echo "PACKAGES=\"$(./get-dependencies.sh)\";UPSTATUS=$?" >>
           "$GITHUB_OUTPUT"
 
-  pull-request:
-    name: Create pull request
-    needs: update
-    runs-on: ubuntu-latest
-    if: ${{ fromJSON(needs.update.outputs.upstatus) > 0 }}
-
-    steps:
       - name: Create pull request
         uses: peter-evans/create-pull-request@v5
+        if: ${{ fromJSON(steps.list-updates.outputs.UPSTATUS) > 0 }}
         with:
           title: "Package updates"
           delete-branch: true
-          body: ${{ needs.update.outputs.packages }}
+          body: ${{ steps.list-updates.outputs.PACKAGES }}
