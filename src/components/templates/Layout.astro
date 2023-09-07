@@ -1,6 +1,9 @@
 ---
+import { getImage } from "astro:assets";
 import { ViewTransitions } from "astro:transitions";
 
+import HunnybeeSocial from "@assets/hunnybee-social.png";
+import { HunnybeeInsideAlt } from "@atoms/HunnybeeInside.astro";
 import StructuredData from "@atoms/StructuredData.astro";
 import PageFooter from "@organisms/PageFooter.astro";
 import PageHeader from "@organisms/PageHeader.astro";
@@ -13,21 +16,45 @@ interface Props {
 const { page } = Astro.props;
 
 let pageTitle = "";
+let description = "";
+let socialDescription = "";
 
 switch (page) {
   case "menu":
     pageTitle = "Menu - ";
+    description =
+      "The menu for Hunnybee Bruncheonette, a counter-service bruncheonette and cafe located at 789 Gore Avenue in Vancouver, British Columbia, where you can also get a tasty coffee (and other things).";
+    socialDescription =
+      "The menu for Hunnybee, a brunch restaurant in Strathcona, where you can also get a tasty coffee (and other things).";
     break;
   case "about":
     pageTitle = "About - ";
+    description =
+      "Hunnybee Bruncheonette is a counter-service bruncheonette and cafe located at 789 Gore Avenue in Vancouver, British Columbia, open from 8:00 am to 4:00 pm daily.";
+    socialDescription =
+      "About Hunnybee Bruncheonette, a brunch restaurant in Strathcona, where you can also get a tasty coffee (and other things). Open from 8:00 am to 4:00 pm daily, no reservation needed!";
     break;
   case "accessibility":
     pageTitle = "Accessibility - ";
+    description =
+      "Hunnybee strives to meet level AA conformance with the Web Content Accessibility Guidelines (WCAG) 2.1.";
+    socialDescription = description;
     break;
   default:
     pageTitle = "";
+    description =
+      "Hunnybee Bruncheonette is a counter-service bruncheonette and cafe located at 789 Gore Avenue in Vancouver, British Columbia, open from 8:00 am to 4:00 pm daily.";
+    socialDescription =
+      "A brunch restaurant in Strathcona, where you can also get a tasty coffee (and other things). Open from 8:00 am to 4:00 pm daily, no reservation needed!";
     break;
 }
+
+const socialImage = await getImage({
+  src: HunnybeeSocial,
+  format: "jpg"
+});
+const socialImageSrc = new URL(Astro.url);
+socialImageSrc.pathname = socialImage.src;
 ---
 
 <!doctype html>
@@ -35,7 +62,7 @@ switch (page) {
   Accessibility by EasySurf.
   Development by Invisible Carrot.
 -->
-<html lang="en">
+<html lang="en-CA">
   <head>
     <meta charset="utf-8" />
     <title>{pageTitle}Hunnybee Bruncheonette</title>
@@ -51,11 +78,34 @@ switch (page) {
     <meta name="msapplication-TileColor" content="#368157" />
     <meta name="theme-color" content="#368157" />
     <meta name="viewport" content="width=device-width" />
-    <meta
-      name="description"
-      content="Hunnybee Bruncheonette is a counter-service bruncheonette and cafe located at 789 Gore Avenue in Vancouver, British Columbia."
-    />
+    <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:title" content={`${pageTitle}Hunnybee Bruncheonette`} />
+    <meta property="og:description" content={socialDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={socialImageSrc} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:locale" content="en_CA" />
+    <meta property="og:image:url" content={socialImageSrc} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content={socialImage.attributes.width} />
+    <meta property="og:image:height" content={socialImage.attributes.height} />
+    <meta property="og:image:alt" content={HunnybeeInsideAlt} />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MDNJ957889"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(...args) {
+        window.dataLayer.push(args);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MDNJ957889");
+    </script>
+    <!-- End Google tag -->
 
     {Astro.url.pathname === "/" && <StructuredData />}
     <ViewTransitions />

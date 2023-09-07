@@ -36,6 +36,7 @@ import { getImage } from "astro:assets";
 
 import HunnybeeInside from "@assets/hunnybee-inside.jpg";
 import HunnybeeLogo from "@assets/hunnybee-logo.png";
+import { HunnybeeInsideAlt } from "@atoms/HunnybeeInside.astro";
 
 const insidePath = await getImage({ src: HunnybeeInside, format: "webp" });
 const logoPath = await getImage({ src: HunnybeeLogo, format: "webp" });
@@ -80,7 +81,34 @@ const hunnybeeData = {
     "https://www.hunnybeebrunch.com"
   ],
   logo: `https://hunnybee.ca${logoPath.src}`,
-  image: `https://hunnybee.ca${insidePath.src}`,
+  image: {
+    "@type": "ImageObject",
+    contentUrl: `https://hunnybee.ca${insidePath.src}`,
+    acquireLicensePage: "https://hunnybee.ca/about",
+    author: {
+      "@type": "Organization",
+      name: "Hunnybee Bruncheonette",
+      url: "https://hunnybee.ca"
+    },
+    creator: {
+      "@type": "Organization",
+      name: "Hunnybee Bruncheonette",
+      url: "https://hunnybee.ca"
+    },
+    encodingFormat: "image/jpeg",
+    datePublished: "2023-09-07",
+    license: "https://hunnybee.ca/about",
+    copyrightHolder: {
+      "@type": "Organization",
+      name: "Hunnybee Bruncheonette",
+      url: "https://hunnybee.ca/about"
+    },
+    creditText: "Hunnybee Bruncheonette",
+    copyrightNotice: `© Copyright ${new Date().getFullYear()} Hunnybee Bruncheonette. All rights reserved.`,
+    copyrightYear: new Date().getFullYear(),
+    description: { HunnybeeInsideAlt },
+    name: "Hunnybee Bruncheonette - Inside"
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: "789 Gore Avenue",
