@@ -1,7 +1,7 @@
 {
   "name": "hunnybee",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Static site for Hunnybee Bruncheonette in Vancouver, BC, Canada.",
   "author": {
@@ -43,6 +43,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@types/gtag.js": "^0.0.13",
     "@types/node": "^20.5.9",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",

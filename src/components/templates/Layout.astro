@@ -98,8 +98,9 @@ socialImageSrc.pathname = socialImage.src;
     ></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(...args) {
-        window.dataLayer.push(args);
+      function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer.push(arguments);
       }
       gtag("js", new Date());
 
