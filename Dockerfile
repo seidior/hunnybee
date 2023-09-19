@@ -1,4 +1,4 @@
-FROM node:20.5-alpine AS build
+FROM node:alpine AS build
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
 
 ADD . .
-RUN pnpm build -- --mode custom
+RUN pnpm build
 
 FROM caddy:latest
 
