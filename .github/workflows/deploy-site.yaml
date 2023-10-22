@@ -30,43 +30,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "20.5.1"
-
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        with:
-          version: "latest"
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> "$GITHUB_OUTPUT"
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-directory.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+      - name: Install bun
+        uses: oven-sh/setup-bun@v1
 
       - name: Install dependencies
-        run: pnpm install
+        run: bun install
 
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
 
-      - name: Run Astro build command
-        run: |
-          pnpm build \
-            --site "${{ steps.pages.outputs.origin }}" \
-            --base "${{ steps.pages.outputs.base_path }}"
+      - name: Build app
+        run: bun run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2

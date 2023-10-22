@@ -18,7 +18,7 @@ uploaded to GitHub Pages using the "Deploy Site" GitHub Action.
 - [Astro](https://astro.build)
 - [Tailwind CSS](https://tailwindcss.com)
 - [TypeScript](https://www.typescriptlang.org)
-- [PNPM](https://pnpm.io)
+- [Bun](https://bun.sh)
 - [ESLint](https://eslint.org)
 - [Prettier](https://prettier.io)
 - [Atomic Design](https://atomicdesign.bradfrost.com)
@@ -36,33 +36,26 @@ uploaded to GitHub Pages using the "Deploy Site" GitHub Action.
 
 ## Development
 
-To get started with developing the site, you must have Node.js 20.5 or later
-installed on your computer along with `corepack` (if it was not included with
-your Node.js install). Also, the [GitHub CLI](https://cli.github.com) tool is
-recommended for working with the repository and
+To get started with developing the site, you must have Bun installed on your
+computer, and for the temporary near future, you must have Node.js LTS installed
+for `sharp` to install correctly. Also, the [GitHub CLI](https://cli.github.com)
+tool is recommended for working with the repository and
 [Visual Studio Code](https://code.visualstudio.com/) is recommended for code
 editing.
-
-Once those are set up, enable pnpm:
-
-```bash
-corepack enable
-corepack prepare pnpm@latest --activate
-```
 
 Then you can clone this repository on your computer using the GitHub CLI:
 
 ```bash
 mkdir -p ~/Developer
 cd ~/Developer
-gh repo clone hunnybee-website/hunnybee-ca
+gh repo clone hunnybee-website/hunnybee-website.github.io
 ```
 
 Install package dependencies:
 
 ```bash
 cd hunnybee-ca
-pnpm install
+bun install
 ```
 
 Open the code in Visual Studio code:
@@ -75,18 +68,19 @@ To run the development server from the command line: (this can also be triggered
 from within Visual Studio Code from the "Run" menu)
 
 ```bash
-pnpm dev
+bun --bun run dev
 ```
 
-Some additional commands that can be run from the command line:
+Some additional commands that can be run from the command line (prepended with
+`bun --bun run`):
 
-| Command       | Description                                        |
-| ------------- | -------------------------------------------------- |
-| pnpm build    | Builds/Re-builds the static site                   |
-| pnpm preview  | Previews the built site                            |
-| pnpm lint     | Checks for straightforward code errors             |
-| pnpm lint:fix | Fixes any auto-fixable straightforward code errors |
-| pnpm format   | Reformats the code to code style standards         |
+| Command  | Description                                        |
+| -------- | -------------------------------------------------- |
+| build    | Builds/Re-builds the static site                   |
+| preview  | Previews the built site                            |
+| lint     | Checks for straightforward code errors             |
+| lint:fix | Fixes any auto-fixable straightforward code errors |
+| format   | Reformats the code to code style standards         |
 
 ## Deployment
 
@@ -100,10 +94,9 @@ the "Deploy Site" action.
 
 Additionally, these GitHub Actions are provided for convenience:
 
-| action           | description                                           |
-| ---------------- | ----------------------------------------------------- |
-| Update Container | For Invisible Carrot's staging site convenience.      |
-| Update Packages  | Updates the dependencies to keep the site up to date. |
+| action           | description                                      |
+| ---------------- | ------------------------------------------------ |
+| Update Container | For Invisible Carrot's staging site convenience. |
 
 The "Update Container" GitHub Action also allows for the site to run locally or
 on a staging site infrastructure using Docker and Docker Compose, and an example
@@ -133,7 +126,8 @@ design and accessibility by [EasySurf](https://easysurf.ca).
 
 All code unique to this repository is made available under the MIT license.
 Package dependencies have their own licenses, and they can be viewed from the
-repository checked out on your development machine with:
+repository checked out on your development machine with: (requires `pnpm`
+enabled, ideally via `corepack`)
 
 ```bash
 pnpm licenses list

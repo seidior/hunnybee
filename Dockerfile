@@ -1,14 +1,14 @@
-FROM node:alpine AS build
+FROM oven/bun:alpine AS build
+
+RUN apk add nodejs
 
 WORKDIR /app
 
-RUN corepack enable && corepack prepare pnpm@latest --activate
-
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
+COPY package.json bun.lockb ./
+RUN bun install
 
 ADD . .
-RUN pnpm build
+RUN bun run build
 
 FROM caddy:latest
 
