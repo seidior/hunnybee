@@ -30,7 +30,7 @@
     "format": "prettier -w \"src/**/*.{js,jsx,css,cjs,mjs,ts,tsx,astro}\""
   },
   "dependencies": {
-    "astro": "^3.6.4",
+    "astro": "^4.0.0",
     "sharp": "0.33.0"
   },
   "devDependencies": {
