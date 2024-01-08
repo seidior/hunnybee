@@ -34,7 +34,7 @@
     "sharp": "^0.33.1"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.3.4",
+    "@astrojs/check": "^0.4.0",
     "@astrojs/react": "^3.0.9",
     "@astrojs/sitemap": "^3.0.4",
     "@astrojs/tailwind": "^5.1.0",
